@@ -9,6 +9,11 @@ pip 24.3.1 from C:\Python\Python313\Lib\site-packages\pip (python 3.13)
  - додаємо шлях до директорії Scripts до системної змінної Path
     (або використовуємо повний шлях до файлу у командному рядку)
 
+! якщо "...is not digitally signed..."
+Виконуємо команду в терміналі (бажано від Адміністратора)
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+
 2. Обираємо робочу директорію і створюємо в ній віртуальне середовище
 source\repos> python -m venv PyWebP33
 якщо не запускається, то зазначаємо повний шлях до python.exe, у разі у 

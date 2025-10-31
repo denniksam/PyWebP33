@@ -14,7 +14,16 @@ def home(request) :
         'x': 10,
         'y': 20,
         'page_title': 'Домашня',
-        'page_header': 'Домашня сторінка'
+        'page_header': 'Розробка вебдодатків з використанням Python'
     }
     return HttpResponse( template.render(context, request) )
 
+
+def clonning(request) :
+    template = loader.get_template('clonning.html')
+    return HttpResponse( template.render() )
+
+
+def layouting(request) :
+    template = loader.get_template('layouting.html')
+    return HttpResponse( template.render() )

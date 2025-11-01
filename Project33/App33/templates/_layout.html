@@ -1,65 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App33 - {% block title %}{% endblock %}</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 100%;
-            min-height: 100vh;
-        }
-        header, footer {
-            background-color: #e1e1e1;            
-        }
-        footer {
-            padding: 20px 30px;
-        }
-        main {
-            flex-grow: 1;
-            padding: 10px 50px;
-        }
-        nav ul, nav ul li  {
-            display: inline-block;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul {
-            list-style: none;
-        }
-        nav a {
-            color: inherit;
-            display: inline-block;
-            padding: 15px 20px;
-            text-decoration: none;
-        }
-        .nav-active {
-            /* background-color: antiquewhite; */
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap-icons/bootstrap-icons.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/site.css' %}" />
+    <link rel="icon" href="{% static 'img/Python.png' %}" />
 </head>
 <body>
     <header>
-        <nav>            
-            <ul>
-                <li><strong><a href="/">Project-33</a></strong></li>
-                <li class="nav-active"><a href="/clonning">Clonning</a></li>
-                <li><a href="/layouting">Layouting</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'img/Python.png' %}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                    Project-33
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/clonning" title="Інструкція з клонування проєкту з Гітхаба">
+                            <i class="bi bi-copy me-3" style="font-size: 1.5rem;"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/layouting"><i class="bi bi-layout-text-window-reverse me-3" style="font-size: 1.5rem;"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/statics"><i class="bi bi-file-image me-3" style="font-size: 1.5rem;"></i></a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main>
+    <main class="container">
     {% block content %}{% endblock %}
     </main>
 
-    <footer>
+    <footer class="bg-body-tertiary border-top">
         &copy; 2025, IT STEP Academy
     </footer>
+
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/site.js' %}"></script>
 </body>
 </html>    

@@ -4,6 +4,12 @@ from django.template import loader
 
 # технічно представлення - це функції, які приймають
 # запит (request) та формують відповідь (response)
+
+def clonning(request) :
+    template = loader.get_template('clonning.html')
+    return HttpResponse( template.render() )
+
+
 def hello(request) :
     return HttpResponse("Hello, world!")
 
@@ -19,11 +25,11 @@ def home(request) :
     return HttpResponse( template.render(context, request) )
 
 
-def clonning(request) :
-    template = loader.get_template('clonning.html')
+def layouting(request) :
+    template = loader.get_template('layouting.html')
     return HttpResponse( template.render() )
 
 
-def layouting(request) :
-    template = loader.get_template('layouting.html')
+def statics(request) :
+    template = loader.get_template('statics.html')
     return HttpResponse( template.render() )

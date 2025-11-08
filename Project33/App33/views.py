@@ -1,6 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render
 from django.template import loader
+from .forms.demo_form import DemoForm
 
 # технічно представлення - це функції, які приймають
 # запит (request) та формують відповідь (response)
@@ -8,6 +9,24 @@ from django.template import loader
 def clonning(request) :
     template = loader.get_template('clonning.html')
     return HttpResponse( template.render() )
+
+
+def forms(request) :
+    if request.method == 'GET' :
+        template = loader.get_template('forms.html')
+        context = {
+            'form': DemoForm()
+        }
+    elif request.method == 'POST' :
+        form = DemoForm(request.POST)
+        context = {
+            'form': form
+        }
+        template = loader.get_template('form_ok.html' if form.is_valid() else 'forms.html')
+    else :
+        return HttpResponseNotAllowed()
+    
+    return HttpResponse( template.render(context=context, request=request) )
 
 
 def hello(request) :

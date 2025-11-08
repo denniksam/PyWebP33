@@ -6,6 +6,7 @@ urlpatterns = [
     path('clonning/', views.clonning, name='clonning'),
     path('hello/', views.hello, name='hello'),
     path('layouting/', views.layouting, name='layouting'),
+    path('params/', views.params, name='params'),
     path('statics/', views.statics, name='statics'),
 ]
 

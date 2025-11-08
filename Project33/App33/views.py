@@ -30,6 +30,24 @@ def layouting(request) :
     return HttpResponse( template.render() )
 
 
+def params(request) :    
+    context = {
+        'params': str(request.GET),
+        'user': request.GET.get('user', 'Немає даних'),
+        'q': request.GET.get('q', 'Немає даних'),
+    }
+    about = request.GET.get('about', None)
+    if about == 'GET' :
+        context['about_get'] = " (метод не має тіла і вживається як запит на читання)"
+    elif about == 'POST' :
+        context['about_post'] = " (метод може мати тіло і вживається як запит на створення)"
+    '''Д.З. Створити посилання-підказки для НТТР-методів PUT, PATCH, DELETE
+    (аналогічно створеним на занятті для методів GET, POST).
+    До звіту додавати скріншоти'''
+    template = loader.get_template('params.html')
+    return HttpResponse( template.render(context, request) )
+
+
 def statics(request) :
     template = loader.get_template('statics.html')
     return HttpResponse( template.render() )

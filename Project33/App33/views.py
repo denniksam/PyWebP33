@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render
 from django.template import loader
 from .forms.demo_form import DemoForm
+from .forms.styled_form import StyledForm
 
 # технічно представлення - це функції, які приймають
 # запит (request) та формують відповідь (response)
@@ -9,6 +10,20 @@ from .forms.demo_form import DemoForm
 def clonning(request) :
     template = loader.get_template('clonning.html')
     return HttpResponse( template.render() )
+
+
+def form_styled(request) :
+    template = loader.get_template('form_styled.html')
+    if request.method == 'GET' :
+        context = {
+            'form': StyledForm()
+        }
+    elif request.method == 'POST' :
+        form = StyledForm(request.POST)
+        context = {
+            'form': form
+        }
+    return HttpResponse( template.render(context=context, request=request) )
 
 
 def forms(request) :

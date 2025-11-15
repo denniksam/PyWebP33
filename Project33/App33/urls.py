@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('clonning/', views.clonning, name='clonning'),
     path('forms/', views.forms, name='forms'),
+    path('form-styled/', views.form_styled, name='forms_styled'),
     path('hello/', views.hello, name='hello'),
     path('layouting/', views.layouting, name='layouting'),
     path('params/', views.params, name='params'),

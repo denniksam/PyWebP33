@@ -1,4 +1,4 @@
-def func1() :
+def func1(x) :
     print("Func 1")
 
 

@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.template import loader
 from .forms.demo_form import DemoForm
 from .forms.styled_form import StyledForm
+from datetime import datetime
 
 # технічно представлення - це функції, які приймають
 # запит (request) та формують відповідь (response)
@@ -54,7 +55,8 @@ def home(request) :
         'x': 10,
         'y': 20,
         'page_title': 'Домашня',
-        'page_header': 'Розробка вебдодатків з використанням Python'
+        'page_header': 'Розробка вебдодатків з використанням Python',
+        'now': datetime.now().strftime("%H:%M:%S %d.%m.%Y")
     }
     return HttpResponse( template.render(context, request) )
 

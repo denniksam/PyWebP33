@@ -14,3 +14,7 @@ main {
 footer {
     padding: 15px 30px;
 }
+.form-delivery {
+    background-color: rgb(241, 222, 200);
+    color: #555;
+}

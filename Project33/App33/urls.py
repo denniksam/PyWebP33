@@ -2,14 +2,16 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('clonning/', views.clonning, name='clonning'),
-    path('forms/', views.forms, name='forms'),
-    path('form-styled/', views.form_styled, name='forms_styled'),
-    path('hello/', views.hello, name='hello'),
-    path('layouting/', views.layouting, name='layouting'),
-    path('params/', views.params, name='params'),
-    path('statics/', views.statics, name='statics'),
+    path('',               views.home,          name='home'         ),
+    path('clonning/',      views.clonning,      name='clonning'     ),
+    path('forms/',         views.forms,         name='forms'        ),
+    path('form-delivery/', views.form_delivery, name='form_delivery'),
+    path('form-styled/',   views.form_styled,   name='form_styled'  ),
+    path('hello/',         views.hello,         name='hello'        ),
+    path('layouting/',     views.layouting,     name='layouting'    ),
+    path('models/',        views.models,        name='models'       ),
+    path('params/',        views.params,        name='params'       ),
+    path('statics/',       views.statics,       name='statics'      ),
 ]
 
 '''

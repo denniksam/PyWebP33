@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.template import loader
 from .forms.demo_form import DemoForm
 from .forms.styled_form import StyledForm
+from .forms.delivery_form import DeliveryForm
 from datetime import datetime
 
 # технічно представлення - це функції, які приймають
@@ -11,6 +12,20 @@ from datetime import datetime
 def clonning(request) :
     template = loader.get_template('clonning.html')
     return HttpResponse( template.render() )
+
+
+def form_delivery(request) :
+    template = loader.get_template('form_delivery.html')
+    if request.method == 'GET' :
+        context = {
+            'form': DeliveryForm()
+        }
+    elif request.method == 'POST' :
+        form = DeliveryForm(request.POST)
+        context = {
+            'form': form
+        }
+    return HttpResponse( template.render(context=context, request=request) )
 
 
 def form_styled(request) :
@@ -64,6 +79,11 @@ def home(request) :
 def layouting(request) :
     template = loader.get_template('layouting.html')
     return HttpResponse( template.render() )
+
+
+def models(request) :
+    template = loader.get_template('models.html')
+    return HttpResponse( template.render(request=request) )
 
 
 def params(request) :    

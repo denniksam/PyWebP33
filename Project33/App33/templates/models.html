@@ -14,6 +14,22 @@
     База даних - у Django є "з коробки" - при інсталяції проєкту створюється БД 
     <code>db.sqlite3</code>, робота з якою налаштована за замовчанням.
 </p>
+{{dk}}
+<div class="row">
+    <div class="col-6 offset-3 border p-3">
+        <form method="post">
+            {% csrf_token %}
+            <h3>Реєстрація:</h3>
+            <table class="table ">
+                {{form.as_table}}
+            </table>
+            <button type="submit" class="btn btn-success">Надіслати</button>
+        </form>
+    </div>
+</div>
+{% if user %}
+    {{user}}
+{% endif %}
 <p>
     Порядок створення моделей:
 </p>

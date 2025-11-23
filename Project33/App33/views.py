@@ -4,7 +4,10 @@ from django.template import loader
 from .forms.demo_form import DemoForm
 from .forms.styled_form import StyledForm
 from .forms.delivery_form import DeliveryForm
+from .forms.reg_form import RegForm
 from datetime import datetime
+from .models import User
+import hashlib
 
 # технічно представлення - це функції, які приймають
 # запит (request) та формують відповідь (response)
@@ -83,7 +86,39 @@ def layouting(request) :
 
 def models(request) :
     template = loader.get_template('models.html')
-    return HttpResponse( template.render(request=request) )
+    if request.method == 'GET' :
+        context = {
+            'form': RegForm()
+        }
+        context['dk'] = hashlib.pbkdf2_hmac(
+            hash_name='sha256',
+            password=b'password',
+            salt=b"123",
+            iterations=1000000,
+            dklen=16).hex()
+    else :
+        form = RegForm(request.POST)
+        context = {
+            'form': form
+        }
+        if form.is_valid() :
+            form_data = form.cleaned_data
+            user = User(
+                first_name = form_data['first_name'],
+                last_name  = form_data['last_name'],
+                email      = form_data['email'],
+                phone      = form_data['phone'],
+                birthdate  = form_data['birthdate']
+            )
+            user.save()
+            context['user'] = user
+            context['dk'] = hashlib.pbkdf2_hmac(
+                hash_name='sha256',
+                password=form_data['password'],
+                salt="123",
+                iterations=1e6,
+                dklen=32)
+    return HttpResponse( template.render(request=request, context=context) )
 
 
 def params(request) :    
